@@ -1,0 +1,9 @@
+* {
+  surface:          #201a17;
+  surfaceVariant:   #51443b;
+  onSurface:        #ece0da;
+  onSurfaceVariant: #d6c3b6;
+  primary:          #ffb77a;
+  onPrimary:        #4e2600;
+  shadow:           #000000;
+}

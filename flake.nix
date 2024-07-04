@@ -1,0 +1,35 @@
+{
+  description = "Personal Nix Configuration";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = { self, nixpkgs, ... }@inputs: {
+    nixosConfigurations = {
+
+      desktop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/desktop/configuration.nix
+          inputs.home-manager.nixosModules.home-manager {
+            _module.args = { inherit inputs; };
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users."xyzyx" = import ./hosts/desktop/home.nix;
+              extraSpecialArgs = { inherit inputs; };
+            };
+          }
+        ];
+      };
+
+    };
+
+  };
+}
+
