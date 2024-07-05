@@ -1,0 +1,9 @@
+* {
+  surface:          {{ surface }};
+  surfaceVariant:   {{ surfaceVariant }};
+  onSurface:        {{ onSurface }};
+  onSurfaceVariant: {{ onSurfaceVariant }};
+  primary:          {{ primary }};
+  onPrimary:        {{ onPrimary }};
+  shadow:           {{ shadow }};
+}
