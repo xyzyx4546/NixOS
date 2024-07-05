@@ -58,7 +58,6 @@
     systemPackages = with pkgs; [
       home-manager
       firefox tree ranger vscode font-manager #temp
-      python312 python312Packages.jinja2 python312Packages.pillow python312Packages.material-color-utilities
     ];
   };
 

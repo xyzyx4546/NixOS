@@ -6,11 +6,10 @@ from material_color_utilities_python import *
 from PIL import Image
 
 HOME_DIR = os.getenv("HOME")
-SCRIPTS_DIR = f"{HOME_DIR}/.config/eww/scripts/material"
-CONFIG_FILE = f"{SCRIPTS_DIR}/colors/current.json"
-TEMPLATES = f"{SCRIPTS_DIR}/templates"
-COLORS = f"{SCRIPTS_DIR}/colors"
-WALLPAPER_PATH = f"{SCRIPTS_DIR}/colors/wall.png"
+MATERIAL_DIR = f"{HOME_DIR}/.config/material"
+TEMPLATES = f"{MATERIAL_DIR}/templates"
+COLORS = f"{MATERIAL_DIR}/colors"
+WALLPAPER_PATH = f"{MATERIAL_DIR}/wallpapers/current.png"
 
 # ================================COLORS=================================================
 
@@ -61,6 +60,8 @@ def get_colors_from_img(image):
 # ================================GENERAL OPERATIONS=================================================
 
 def render_templates(colors_list):
+  if not os.path.exists(COLORS):
+    os.makedirs(COLORS)
   for template in os.listdir(TEMPLATES):
     print(f"Rendering {template}")
     with open(f"{TEMPLATES}/{template}", "r") as file:
