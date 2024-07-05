@@ -61,9 +61,13 @@
     ];
   };
 
-  #fonts = {
-    #packages = with pkgs; [ texlivePackages.fontawesome texlivePackages.nunito ];
-  #};
+  fonts = {
+    packages = with pkgs; [
+      texlivePackages.fontawesome
+      texlivePackages.nunito
+      (pkgs.callPackage ../../packages/sono.nix { inherit pkgs; })
+    ];
+  };
 
   programs.hyprland.enable = true;
 
