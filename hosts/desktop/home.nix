@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ./home/programs/git
-    ./home/programs/kitty
-    ./home/programs/neofetch
+    ../../home/programs/git
+    ../../home/programs/kitty
+    ../../home/programs/neofetch
 
-    ./home/system/hyprland
+    ../../home/system/hyprland
   ];
 
   home = {
