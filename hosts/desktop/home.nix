@@ -20,12 +20,12 @@
 
     file.".config/wallpapers" = {
       recursive = true;
-      source = ../../packages/wallpapers;
+      source = ./packages/wallpapers;
     };
 
     file.".config/eww/scripts/material/colors" = {
       recursive = true;
-      source = ../../packages/colors;
+      source = ./packages/colors;
     };
 
     stateVersion = "24.05";
