@@ -57,14 +57,13 @@
     };
     systemPackages = with pkgs; [
       home-manager
-      firefox tree ranger vscode #temp
+      firefox tree ranger vscode font-manager#temp
     ];
   };
 
   fonts = {
     packages = with pkgs; [
       texlivePackages.fontawesome
-      texlivePackages.nunito
       (pkgs.callPackage ../../packages/sono.nix { inherit pkgs; })
     ];
   };
