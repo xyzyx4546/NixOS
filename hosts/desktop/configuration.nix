@@ -15,19 +15,15 @@
 
   networking.hostName = "desktop";
   networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [  ];
-  networking.firewall.allowedUDPPorts = [  ];
 
   time.timeZone = "Europe/Berlin";
+  i18n.defaultLocale = "en_US.UTF-8";
+  console.keyMap = "de-latin1";
 
   users.users.xyzyx = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    shell = pkgs.bashInteractive;
   };
-
-  i18n.defaultLocale = "en_US.UTF-8";
-  console.keyMap = "de-latin1";
 
   services = {
     greetd = {
@@ -56,18 +52,18 @@
   environment = {
     variables = {
       MOZ_ENABLE_WAYLAND = "1";
-      ANKI_WAYLAND = "1";
       NIXOS_OZONE_WL = "1";
       EDITOR = "nvim";
     };
     systemPackages = with pkgs; [
       home-manager
-      firefox
-      tree
-      ranger
-      vscode
+      firefox tree ranger vscode #temp
     ];
   };
+
+  #fonts = {
+    #packages = with pkgs; [ texlivePackages.fontawesome texlivePackages.nunito ];
+  #};
 
   programs.hyprland.enable = true;
 

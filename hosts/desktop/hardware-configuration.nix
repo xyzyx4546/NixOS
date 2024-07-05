@@ -37,14 +37,7 @@
     options = [ "fmask=0022" "dmask=0022" ];
   };
 
-  swapDevices = [{
-    device = "/.swapfile";
-  }];
-
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp14s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp16s0u2.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp15s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
