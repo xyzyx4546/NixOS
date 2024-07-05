@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ../../home/programs/git
-    ../../home/programs/kitty
-    ../../home/programs/neofetch
+    ./home/programs/git
+    ./home/programs/kitty
+    ./home/programs/neofetch
 
-    ../../home/system/hyprland
+    ./home/system/hyprland
   ];
 
   home = {
@@ -20,12 +20,12 @@
 
     file.".config/wallpapers" = {
       recursive = true;
-      source = ../../../assets/wallpapers;
+      source = ../../packages/wallpapers;
     };
 
     file.".config/eww/scripts/material/colors" = {
       recursive = true;
-      source = ../../../assets/colors;
+      source = ../../packages/colors;
     };
 
     stateVersion = "24.05";

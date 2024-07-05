@@ -64,7 +64,7 @@
   fonts = {
     packages = with pkgs; [
       texlivePackages.fontawesome
-      (pkgs.callPackage ../../packages/sono.nix { inherit pkgs; })
+      (pkgs.callPackage ./packages/sono/sono.nix { inherit pkgs; })
     ];
   };
 

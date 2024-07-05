@@ -4,7 +4,7 @@ pkgs.stdenv.mkDerivation {
   pname = "berkeley-mono-typeface";
   version = "1.009";
 
-  src = ../../assets/fonts/Sono.zip;
+  src = ./Sono.zip;
 
   unpackPhase = ''
     runHook preUnpack
