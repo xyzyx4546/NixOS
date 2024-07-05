@@ -7,6 +7,7 @@
     ./home/programs/neofetch
 
     ./home/system/hyprland
+    ./home/system/material
   ];
 
   home = {
