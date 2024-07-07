@@ -133,10 +133,10 @@
 
 
         # Programms
+        "SUPER, SUPER_L, exec, ags -t applauncher"
         "SUPER, C, exec, kitty"
         #"SUPER, B, exec, $HOME/.config/hypr/scripts/browser.sh"
         "SUPER, B, exec, firefox"
-        "SUPER, E, exec, ranger"
         "SUPER, L, exec, hyprlock"
         "SUPER SHIFT, Q, exec, $EWW_SCRIPTS/launcher/toggle_launcher.sh powermenu"
         ",PRINT, exec, grimblast --notify --freeze copysave area"
