@@ -78,9 +78,6 @@ def setup(img):
   except shutil.SameFileError:
     pass
   os.system("pkill -SIGUSR1 kitty")
-  #os.makedirs(f"{HOME_DIR}/.config/presets/gtk-3.0", exist_ok=True)
-  #os.makedirs(f"{HOME_DIR}/.config/presets/gtk-4.0", exist_ok=True)
-  #os.system(f"gradience-cli apply -p {COLORS}/colors-gradience.json --gtk both")
   os.system(f"swww img {WALLPAPER_PATH} --transition-fps 75 --transition-type wipe --transition-duration 2")
 
 # ================================CLI=================================================
