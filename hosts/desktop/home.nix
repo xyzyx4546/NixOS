@@ -1,13 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, ... }: {
 
-{
   imports = [
     ./home/programs/git
     ./home/programs/kitty
     ./home/programs/neofetch
 
-    ./home/system/hyprland
     ./home/system/ags
+    ./home/system/gtk
+    ./home/system/hyprland
     ./home/system/material
   ];
 

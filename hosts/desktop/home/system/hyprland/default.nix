@@ -148,7 +148,8 @@
         "SUPER SHIFT, N, movetoworkspace, r+1"
         "ALT, Tab, workspace, m+1"
         "ALT SHIFT, Tab, workspace, m-1"
-        "SUPER CTRL, right, workspace, m+1"
+        "SUPER, Tab, focusmonitor, +1"
+        "SUPER SHIFT, Tab, focusmonitor, -1"
       ];
       bindm = [
         ", mouse:277, movewindow"

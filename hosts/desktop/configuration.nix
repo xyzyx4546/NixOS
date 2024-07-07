@@ -1,6 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, ... }: {
 
-{
   imports = [ ./hardware-configuration.nix ];
 
   nix = {
@@ -57,7 +56,7 @@
     };
     systemPackages = with pkgs; [
       home-manager
-      firefox tree ranger vscode font-manager #temp
+      firefox tree ranger vscode font-manager piper#temp
     ];
   };
 
