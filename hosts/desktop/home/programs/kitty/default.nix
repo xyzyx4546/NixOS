@@ -8,6 +8,8 @@
       window_margin_width = 11;
       remember_window_size = "no";
       background_opacity = "0.7";
+
+      confirm_os_window_close = 0;
     };
   };
 }

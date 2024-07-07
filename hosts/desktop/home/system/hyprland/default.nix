@@ -18,7 +18,7 @@
     xwayland.enable = true;
 
     settings = {
-      "$mainMod" = "SUPER";
+      source = "~/.config/material/colors/colors-hyprland.conf";
 
       exec-once = [
         "swww-daemon"
@@ -37,43 +37,122 @@
         accel_profile = "flat";
       };
 
+      general = {
+        gaps_in = 5;
+        gaps_out = 15;
+        border_size = 2;
+        "col.active_border" = "$primary";
+        "col.inactive_border" = "rgba(595959aa)";
+        layout = "dwindle";
+        resize_on_border = true;
+      };
+
+      decoration = {
+        rounding = 20;
+        blur = {
+          enabled = true;
+          xray = true;
+          size = 1;
+          passes = 4;
+          new_optimizations = true;
+        };
+        drop_shadow = "yes";
+        shadow_range = 20;
+        shadow_render_power = 4;
+        "col.shadow" = "$shadow";
+        dim_around = "0.5";
+      };
+
+      animations = {
+        enabled = "yes";
+
+        bezier = "bezier, 0.25, 1, 0.5, 1";
+
+        animation = [ 
+          "windows, 1, 6, bezier, popin"
+          "border, 1, 6, bezier"
+          "borderangle, 1, 6, bezier"
+          "fade, 1, 6, bezier"
+          "workspaces, 1, 6, bezier"
+          "layers, 1, 3, bezier, popin"
+        ];
+      };
+
+      dwindle = {
+        force_split = 0;
+        preserve_split = true;
+      };
+
+      windowrulev2 = [
+        "suppressevent maximize, class:.*"
+
+        "float, class:(floating|zenity)"
+        "size 35% 35%, class:(floating|zenity)"
+        "dimaround, class:(floating|zenity)"
+
+        "monitor 0, class:(?!.*(WebCord|Spotify|org.telegram.desktop|steam))"
+        "workspace 99, class:(WebCord|Spotify|org.telegram.desktop|steam)"
+      ];
+
+      layerrule = [
+        "dimaround,^(rofi)$"
+        "animation fade,^(eww-bar)$"
+      ];
+
+      workspace = [
+        "1, monitor:DP-3, default:true"
+        "2, monitor:DP-3"
+        "3, monitor:DP-3"
+        "4, monitor:DP-3"
+        "5, monitor:DP-3"
+        "6, monitor:DP-3"
+        "7, monitor:DP-3"
+        "8, monitor:DP-3"
+        "9, monitor:DP-3"
+        "10, monitor:DP-3"
+        "98, monitor:HDMI-A-1, on-created-empty:firefox"
+        "99, monitor:HDMI-A-1, default:true"
+      ];
+
       bind = [
         # Window management
-        "$mainMod, Q, killactive,"
-        "$mainMod SHIFT, escape, exit,"
-        "bind = $mainMod, F, togglefloating,"
+        "SUPER, Q, killactive,"
+        "SUPER SHIFT, escape, exit,"
+        "bind = SUPER, F, togglefloating,"
         ",F11, fullscreen, 0"
 
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+        "SUPER, left, movefocus, l"
+        "SUPER, right, movefocus, r"
+        "SUPER, up, movefocus, u"
+        "SUPER, down, movefocus, d"
 
-        "$mainMod SHIFT, left, movewindow, l"
-        "$mainMod SHIFT, right, movewindow, r"
-        "$mainMod SHIFT, up, movewindow, u"
-        "$mainMod SHIFT, down, movewindow, d"
+        "SUPER SHIFT, left, movewindow, l"
+        "SUPER SHIFT, right, movewindow, r"
+        "SUPER SHIFT, up, movewindow, u"
+        "SUPER SHIFT, down, movewindow, d"
 
 
         # Programms
-        "$mainMod, C, exec, kitty"
-        #"$mainMod, B, exec, $HOME/.config/hypr/scripts/browser.sh"
-        "$mainMod, B, exec, firefox"
-        "$mainMod, E, exec, ranger"
-        "$mainMod, L, exec, hyprlock"
-        "$mainMod SHIFT, Q, exec, $EWW_SCRIPTS/launcher/toggle_launcher.sh powermenu"
+        "SUPER, C, exec, kitty"
+        #"SUPER, B, exec, $HOME/.config/hypr/scripts/browser.sh"
+        "SUPER, B, exec, firefox"
+        "SUPER, E, exec, ranger"
+        "SUPER, L, exec, hyprlock"
+        "SUPER SHIFT, Q, exec, $EWW_SCRIPTS/launcher/toggle_launcher.sh powermenu"
         ",PRINT, exec, grimblast --notify --freeze copysave area"
+        "SUPER, W, exec, python ~/.config/material/material.py random"
+        "SUPER SHIFT, W, exec, python ~/.config/material/material.py select"
 
         # Workspaces
-        "$mainMod, N, workspace, r+1"
-        "$mainMod SHIFT, N, movetoworkspace, r+1"
+        "SUPER, N, workspace, r+1"
+        "SUPER SHIFT, N, movetoworkspace, r+1"
         "ALT, Tab, workspace, m+1"
         "ALT SHIFT, Tab, workspace, m-1"
-        "$mainMod CTRL, right, workspace, m+1"
+        "SUPER CTRL, right, workspace, m+1"
       ];
       bindm = [
         ", mouse:277, movewindow"
-        "$mainMod, mouse:272, resizewindow"
+        "SUPER, mouse:272, resizewindow"
       ];
 
       env = [

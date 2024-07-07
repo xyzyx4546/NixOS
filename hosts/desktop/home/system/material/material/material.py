@@ -3,13 +3,16 @@ import shutil
 import argparse
 from jinja2 import Template
 from material_color_utilities_python import *
-from PIL import Image
+from PIL import Image, ImageChops
+import random
+import glob
 
 HOME_DIR = os.getenv("HOME")
 MATERIAL_DIR = f"{HOME_DIR}/.config/material"
 TEMPLATES = f"{MATERIAL_DIR}/templates"
 COLORS = f"{MATERIAL_DIR}/colors"
-WALLPAPER_PATH = f"{MATERIAL_DIR}/wallpapers/current.png"
+WALLPAPER_DIR = f"{MATERIAL_DIR}/wallpapers"
+WALLPAPER_PATH = f"{MATERIAL_DIR}/wall.png"
 
 # ================================COLORS=================================================
 
@@ -75,21 +78,29 @@ def setup(img):
   except shutil.SameFileError:
     pass
   os.system("pkill -SIGUSR1 kitty")
-  os.system("gradience-cli apply -p ~/.config/eww/scripts/material/colors/colors-gradience.json --gtk both")
+  os.system(f"gradience-cli apply -p {COLORS}/colors-gradience.json --gtk both")
   os.system(f"swww img {WALLPAPER_PATH} --transition-fps 75 --transition-type wipe --transition-duration 2")
-
-def main(colors, image):
-  render_templates(colors)
-  setup(image)
 
 # ================================CLI=================================================
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description="Generate material colors on fly")
+  parser.add_argument("IMAGE", help="Specify 'select', 'random', or provide an image file path.")
+  IMAGE = parser.parse_args().IMAGE
 
-  parser.add_argument("IMAGE", type=str, help="Generate color scheme based on an image file.")
+  if IMAGE == "random":
+    while True:
+      IMAGE = random.choice(glob.glob(f"{WALLPAPER_DIR}/*"))
+      IMAGE_OLD = Image.open(IMAGE)
+      IMAGE_NEW = Image.open(WALLPAPER_PATH).resize(IMAGE_OLD.size).convert(IMAGE_OLD.mode)
 
-  args = parser.parse_args()
-
-  colors = get_colors_from_img(args.IMAGE)
-  main(colors, args.IMAGE)
+      if ImageChops.difference(IMAGE_OLD, IMAGE_NEW).getbbox():
+          break
+  
+  elif IMAGE == "select":
+    IMAGE = os.popen(f"zenity --file-selection --filename {WALLPAPER_DIR}/*").read().strip()
+  
+  if os.path.isfile(IMAGE):
+    colors = get_colors_from_img(IMAGE)
+    render_templates(colors)
+    setup(IMAGE)
