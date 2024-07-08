@@ -3,7 +3,7 @@
   programs.hyprlock = {
     enable = true;
     settings = {
-      source = "~/.config/eww/scripts/material/colors/colors-hyprland.conf";
+      source = "~/.config/material/colors/colors-hyprland.conf";
 
       general = {
         disable_loading_bar = true;
@@ -24,7 +24,7 @@
         text = "$TIME";
         color = "$onSurface";
         font_size = 140;
-        font_family = "Nunito ExtraBold";
+        font_family = "Sono Bold";
         position = "0, 150";
         halign = "center";
         valign = "center";

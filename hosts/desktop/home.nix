@@ -16,11 +16,7 @@
     homeDirectory = "/home/xyzyx";
 
     packages = with pkgs; [
-      hello
-      neovim
-
-      # Programs
-      minecraft
+      prismlauncher
     ];
 
     stateVersion = "24.05";

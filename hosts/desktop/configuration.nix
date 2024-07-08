@@ -59,7 +59,7 @@
     };
     systemPackages = with pkgs; [
       home-manager
-      firefox tree ranger vscode font-manager piper#temp
+      firefox tree ranger vscode #temp
     ];
   };
 
