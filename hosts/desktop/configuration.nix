@@ -10,7 +10,10 @@
       options = "--delete-older-than 28d";
     };
   };
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true;
+  };
 
   networking.hostName = "desktop";
   networking.networkmanager.enable = true;

@@ -1,10 +1,10 @@
 { pkgs }:
 
 pkgs.stdenv.mkDerivation {
-  pname = "berkeley-mono-typeface";
+  pname = "layan-border-cursors";
   version = "1.0";
 
-  src = ./sono.zip;
+  src = ./layan.zip;
 
   unpackPhase = ''
     runHook preUnpack
@@ -14,7 +14,7 @@ pkgs.stdenv.mkDerivation {
 
   installPhase = ''
     runHook preInstall
-    install -Dm644 static/*.ttf -t $out/share/fonts/truetype
+    install -Dm644 static/* -t $out/share/icons/default
     runHook postInstall
   '';
 }
