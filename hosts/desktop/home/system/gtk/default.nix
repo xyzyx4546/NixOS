@@ -30,8 +30,8 @@
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    package = (pkgs.callPackage ./packages/layan/layan.nix { inherit pkgs; });
-    name = "layan";
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
     size = 11;
   };
 }

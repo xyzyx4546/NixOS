@@ -18,10 +18,9 @@
     packages = with pkgs; [
       hello
       neovim
-      zip
 
       # Programs
-      #minecraft
+      minecraft
     ];
 
     stateVersion = "24.05";
