@@ -9,8 +9,8 @@
 
   home.packages = with pkgs; [
     xdg-desktop-portal-hyprland
-    qt5.qtwayland
-    qt6.qtwayland
+    grimblast
+    playerctl
   ];
 
   wayland.windowManager.hyprland = {
@@ -39,7 +39,7 @@
 
       general = {
         gaps_in = 5;
-        gaps_out = 15;
+        gaps_out = "0, 15, 15, 15";
         border_size = 2;
         "col.active_border" = "$primary";
         "col.inactive_border" = "rgba(595959aa)";
@@ -48,7 +48,7 @@
       };
 
       decoration = {
-        rounding = 20;
+        rounding = 15;
         blur = {
           enabled = true;
           xray = true;
@@ -110,8 +110,8 @@
         "8, monitor:DP-3"
         "9, monitor:DP-3"
         "10, monitor:DP-3"
-        "98, monitor:HDMI-A-1, on-created-empty:firefox"
-        "99, monitor:HDMI-A-1, default:true"
+        "98, monitor:HDMI-A-1, gapsout:15, on-created-empty:firefox"
+        "99, monitor:HDMI-A-1, gapsout:15, default:true"
       ];
 
       bind = [
@@ -154,6 +154,14 @@
       bindm = [
         ", mouse:277, movewindow"
         "SUPER, mouse:272, resizewindow"
+      ];
+      bindl = [
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioNext, exec, playerctl next"
+        ", XF86AudioPrev, exec, playerctl previous"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05- -l 0.0"
       ];
 
       env = [
