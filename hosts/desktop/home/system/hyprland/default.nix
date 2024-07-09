@@ -2,9 +2,7 @@
 
   imports = [
     ./hyprlock.nix
-    #./hypridle.nix
-    #./hyprpaper.nix
-    # ./hyprcursor.nix
+    ./hypridle.nix
   ];
 
   home.packages = with pkgs; [
@@ -41,7 +39,7 @@
 
       general = {
         gaps_in = 5;
-        gaps_out = "0, 15, 15, 15";
+        gaps_out = "0, 10, 10, 10";
         border_size = 2;
         "col.active_border" = "$primary";
         "col.inactive_border" = "rgba(595959aa)";
@@ -112,8 +110,8 @@
         "8, monitor:DP-3"
         "9, monitor:DP-3"
         "10, monitor:DP-3"
-        "98, monitor:HDMI-A-1, gapsout:15, on-created-empty:firefox"
-        "99, monitor:HDMI-A-1, gapsout:15, default:true"
+        "98, monitor:HDMI-A-1, gapsout:10, on-created-empty:firefox"
+        "99, monitor:HDMI-A-1, gapsout:10, default:true"
       ];
 
       bind = [
