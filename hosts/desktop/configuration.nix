@@ -25,6 +25,7 @@
   users.users.xyzyx = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    initialPassword = "xyzyx";
   };
 
   services = {
@@ -36,7 +37,7 @@
           user = "xyzyx";
         };
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks --remember --remember-user-session --time --cmd ${pkgs.hyprland}/bin/Hyprland";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks --remember --remember-user-session --time --cmd Hyprland";
           user = "greeter";
         };
       };

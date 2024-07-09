@@ -6,6 +6,7 @@
     enable = true;
     #configDir = ./ags;
     extraPackages = with pkgs; [
+      sassc
       #gtksourceview
       #webkitgtk
       #accountsservice

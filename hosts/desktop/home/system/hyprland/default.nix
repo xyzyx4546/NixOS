@@ -22,6 +22,8 @@
 
       exec-once = [
         "swww-daemon"
+        "ags"
+        "python ~/.config/material/material.py random"
       ];
 
       monitor = [

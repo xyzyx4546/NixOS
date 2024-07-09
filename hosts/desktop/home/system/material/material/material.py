@@ -78,6 +78,7 @@ def setup(img):
   except shutil.SameFileError:
     pass
   os.system("pkill -SIGUSR1 kitty")
+  os.system(f"ags -r \"(await import('file://$HOME/.config/ags/applyCss.js')).default()\"")
   os.system(f"swww img {WALLPAPER_PATH} --transition-fps 75 --transition-type wipe --transition-duration 2")
 
 # ================================CLI=================================================
