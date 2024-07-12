@@ -1,13 +1,13 @@
-{ ... }: {
+{ pkgs, ... }: {
 
   services.hypridle = {
     enable = true;
 
     settings = {
       listener = [{
-        timeout = 10;
-        on-timeout = "hyprlock";
-      }]
+        timeout = 1800;
+        on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
+      }];
     };
   };
 }

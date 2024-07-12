@@ -1,1 +1,3 @@
-fix cursor
+fix cursor, top bar transperncy isnt getting updated, Volume mute-icon
+workspaces
+kde connect (+ statusicon)

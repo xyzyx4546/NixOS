@@ -37,7 +37,7 @@
           user = "xyzyx";
         };
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks --remember --remember-user-session --time --cmd Hyprland";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks --remember --remember-user-session --time --cmd ${pkgs.hyprland}/bin/Hyprland";
           user = "greeter";
         };
       };
@@ -66,7 +66,7 @@
 
   fonts = {
     packages = with pkgs; [
-      texlivePackages.fontawesome
+      font-awesome
       (pkgs.callPackage ./packages/sono/sono.nix { inherit pkgs; })
     ];
   };

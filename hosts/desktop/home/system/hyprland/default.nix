@@ -21,12 +21,13 @@
       exec-once = [
         "swww-daemon"
         "ags"
-        "python ~/.config/material/material.py random"
+        
+        "webcord -m"
       ];
 
       monitor = [
-        "HDMI-A-1, 1980x1080@60, 0x0, 1"
-        "DP-3, 2560x1440@144, 1980x-200, 1"
+        "HDMI-A-1, 1920x1080@60, 0x0, 1"
+        "DP-3, 2560x1440@144, 1920x-200, 1"
       ];
 
       input = {
@@ -39,8 +40,7 @@
 
       general = {
         gaps_in = 5;
-        gaps_out = "0, 10, 10, 10";
-        border_size = 2;
+        gaps_out = "0, 15, 15, 15";
         "col.active_border" = "$primary";
         "col.inactive_border" = "rgba(595959aa)";
         layout = "dwindle";
@@ -95,8 +95,9 @@
       ];
 
       layerrule = [
-        "dimaround,^(rofi)$"
-        "animation fade,^(eww-bar)$"
+        "noanim, ^(hyprpicker)$"
+        "blur, ^(bar)$"
+        "ignorealpha 0.5, ^(bar)$"
       ];
 
       workspace = [
