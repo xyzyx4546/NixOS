@@ -60,7 +60,7 @@
     };
     systemPackages = with pkgs; [
       home-manager
-      firefox tree ranger vscode webcord #temp
+      firefox tree ranger vscode webcord spotify #temp
     ];
   };
 

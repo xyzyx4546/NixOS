@@ -22,7 +22,7 @@
         "swww-daemon"
         "ags"
         
-        "webcord -m"
+        "sleep 0.1 && webcord -m"
       ];
 
       monitor = [
@@ -95,9 +95,9 @@
       ];
 
       layerrule = [
-        "noanim, ^(hyprpicker)$"
+        "noanim, ^(hyprpicker|notification_popup)$"
         "blur, ^(bar)$"
-        "ignorealpha 0.5, ^(bar)$"
+        "ignorealpha 0.7, ^(bar)$"
       ];
 
       workspace = [
@@ -157,12 +157,12 @@
         "SUPER, mouse:272, resizewindow"
       ];
       bindl = [
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioMute, exec, ags -r \"const { open } = await import('file://$HOME/.config/ags/widgets/volume_OSD.js'); open();\" & wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ", XF86AudioPlay, exec, playerctl play-pause"
         ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPrev, exec, playerctl previous"
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05- -l 0.0"
+        ", XF86AudioRaiseVolume, exec, ags -r \"const { open } = await import('file://$HOME/.config/ags/widgets/volume_OSD.js'); open();\" & wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"
+        ", XF86AudioLowerVolume, exec, ags -r \"const { open } = await import('file://$HOME/.config/ags/widgets/volume_OSD.js'); open();\" & wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05- -l 0.0"
       ];
 
       env = [
