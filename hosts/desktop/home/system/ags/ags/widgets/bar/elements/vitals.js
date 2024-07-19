@@ -57,17 +57,17 @@ export default function Vitals() {
     children: [
       element(
         cpu.bind(),
-        cpu.bind().as((c) => `${Math.round(c * 100)}%`),
+        cpu.bind().as((c) => `${(c * 100).toFixed()}%`),
         ''
       ),
       element(
         ram.bind().as((r) => r[1] / r[0]),
-        ram.bind().as((r) => `${Math.round(r[1] / 10 ** 9)} / ${Math.round(r[0] / 10 ** 9)} GB`),
+        ram.bind().as((r) => `${(r[1] / 10 ** 9).toFixed(1)} / ${(r[0] / 10 ** 9).toFixed()} GB`),
         ''
       ),
       element(
         disk.bind().as((d) => d[1] / d[0]),
-        disk.bind().as((d) => `${Math.round(d[1] / 10 ** 9)} / ${Math.round(d[0] / 10 ** 9)} GB`),
+        disk.bind().as((d) => `${(d[1] / 10 ** 9).toFixed(1)} / ${(d[0] / 10 ** 9).toFixed()} GB`),
         ''
       ),
     ],

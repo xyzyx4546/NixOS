@@ -1,3 +1,6 @@
 fix cursor, top bar transperncy isnt getting updated, Volume mute-icon, miniplayer progressbar
 workspaces
 kde connect (+ statusicon)
+
+
+https://www.chunkbase.com/apps/seed-map#seed=-537659579656037746&platform=java_1_21&dimension=nether&x=1044&z=-348&zoom=0.409

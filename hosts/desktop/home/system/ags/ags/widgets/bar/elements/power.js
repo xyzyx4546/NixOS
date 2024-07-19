@@ -12,6 +12,11 @@ const revealer = Widget.Revealer({
       }),
       Widget.Button({
         class_name: 'power-button revealed',
+        child: Widget.Label({ label: '' }),
+        on_clicked: () => Utils.exec('hyprctl dispatch exit'),
+      }),
+      Widget.Button({
+        class_name: 'power-button revealed',
         child: Widget.Label({ label: '' }),
         on_clicked: () => Utils.exec('systemctl suspend'),
       }),

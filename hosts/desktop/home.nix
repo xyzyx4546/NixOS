@@ -1,6 +1,7 @@
 { pkgs, ... }: {
 
   imports = [
+    ./home/programs/firefox
     ./home/programs/git
     ./home/programs/kitty
     ./home/programs/neofetch
