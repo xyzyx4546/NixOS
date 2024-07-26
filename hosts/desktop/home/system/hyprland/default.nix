@@ -22,7 +22,7 @@
         "swww-daemon"
         "ags"
         
-        "sleep 0.1 && webcord -m"
+        "sleep 1 && webcord -m"
       ];
 
       monitor = [

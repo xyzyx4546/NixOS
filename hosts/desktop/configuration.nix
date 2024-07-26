@@ -67,7 +67,7 @@
   fonts = {
     packages = with pkgs; [
       font-awesome
-      (pkgs.callPackage ./packages/sono/sono.nix { inherit pkgs; })
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       (pkgs.callPackage ./packages/nunito/nunito.nix { inherit pkgs; })
     ];
   };
