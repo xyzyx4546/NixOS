@@ -24,7 +24,7 @@
         text = "$TIME";
         color = "$onSurface";
         font_size = 140;
-        font_family = "Sono Bold";
+        font_family = "Nunito Bold";
         position = "0, 150";
         halign = "center";
         valign = "center";

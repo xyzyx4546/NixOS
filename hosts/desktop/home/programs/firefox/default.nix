@@ -3,15 +3,61 @@
     enable = true;
 
     profiles."xyzyx" = {
+      isDefault = true;
+
+      bookmarks = [{ toolbar = true; bookmarks = [
+        {
+          name = "Gaming";
+          bookmarks = [
+            {
+              name = "Wikis";
+              bookmarks = [];
+            }
+            { name = "Steam keys"; url = "https://www.keyforsteam.de"; }
+          ];
+        }
+        {
+          name = "Coding";
+          bookmarks = [
+            { name = "GitHub"; url = "https://github.com"; }
+          ];
+        }
+        { name = "YouTube"; url = "https://www.youtube.com/feed/subscriptions"; }
+      ];}];
+
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-        # More extensions can be found using "nix flake show "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons"
+        # More extensions can be found using 'nix flake show "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons"'
         proton-pass
+        ublock-origin
       ];
+
+      search = {
+        default = "Startpage";
+        privateDefault = "Startpage";
+        engines = {
+          "Startpage" = {
+            urls = [{ template = "https://www.startpage.com/do/search?prfe=d19326370c2f1d3e6f75079053e84203a4dc781421d147ae7ba652dad1bcd6a2347e3a5077406d1a7e5118441c68c4607f725b821d835f47a1ed2d57032b8cee9b616b23f2063ec95a67438e&query={searchTerms}"; }];
+            iconUpdateURL = "https://www.startpage.com/favicon.ico";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [ "@startpage" ];
+          };
+
+          "Minecraft" = {
+            urls = [{ template = "https://minecraft.wiki/?search={searchTerms}"; }];
+            iconUpdateURL = "https://minecraft.wiki/favicon.ico";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [ "@minecraft" ];
+          };
+
+          "Google".metaData.hidden = true;
+          "Bing".metaData.hidden = true;
+          "DuckDuckGo".metaData.hidden = true;
+          "Wikipedia (en)".metaData.hidden = true;
+        };
+      };
 
       settings = {
         # SPEED
-        "content.notify.interval" = 100000;
-
         "gfx.canvas.accelerated.cache-items" = 4096;
         "gfx.canvas.accelerated.cache-size" = 512;
         "gfx.content.skia-font-cache-size" = 20;
@@ -87,6 +133,7 @@
 
         "security.mixed_content.block_display_content" = true;
         "pdfjs.enableScripting" = false;
+        "extensions.autoDisableScopes" = 0;
         "extensions.postDownloadThirdPartyPrompt" = false;
 
         "network.http.referer.XOriginTrimmingPolicy" = 2;
@@ -107,7 +154,7 @@
         "datareporting.healthreport.uploadEnabled" = false;
         "toolkit.telemetry.unified" = false;
         "toolkit.telemetry.enabled" = false;
-        "toolkit.telemetry.server" = "data: =";
+        "toolkit.telemetry.server" = "data = =";
         "toolkit.telemetry.archive.enabled" = false;
         "toolkit.telemetry.newProfilePing.enabled" = false;
         "toolkit.telemetry.shutdownPingSender.enabled" = false;
@@ -138,7 +185,6 @@
         "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "browser.discovery.enabled" = false;
-        "browser.shell.checkDefaultBrowser" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "browser.preferences.moreFromMozilla" = false;
@@ -146,53 +192,60 @@
         "browser.aboutConfig.showWarning" = false;
         "browser.aboutwelcome.enabled" = false;
 
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "browser.compactmode.show" = true;
         "browser.display.focus_ring_on_anything" = true;
         "browser.display.focus_ring_style" = 0;
         "browser.display.focus_ring_width" = 0;
-        "layout.css.prefers-color-scheme.content-override" = 2;
-        "browser.privateWindowSeparation.enabled" = false;
+        "layout.css.prefers-color-scheme.content-override" = 0;
 
         "cookiebanners.service.mode" = 1;
         "cookiebanners.service.mode.privateBrowsing" = 1;
 
-        "full-screen-api.transition-duration.enter" = "0 0";
-        "full-screen-api.transition-duration.leave" = "0 0";
-        "full-screen-api.warning.delay" = -1;
-        "full-screen-api.warning.timeout" = 0;
+        "browser.translations.enable" = false;
 
-        "browser.urlbar.suggest.calculator" = true;
-        "browser.urlbar.unitConversion.enabled" = true;
         "browser.urlbar.trending.featureGate" = false;
 
-        "browser.newtabpage.activity-stream.feeds.topsites" = false;
-        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+        "browser.startup.page" = 3;
+        "browser.newtabpage.enabled" = false;
+        "browser.toolbars.bookmarks.visibility" = "always";
 
         "extensions.pocket.enabled" = false;
 
-        "browser.download.always_ask_before_handling_new_types" = true;
         "browser.download.manager.addToRecentDocs" = false;
 
-        "browser.download.open_pdf_attachments_inline" = true;
-
-        "browser.bookmarks.openInTabClosesMenu" = false;
         "browser.menu.showViewImageInfo" = true;
         "findbar.highlightAll" = true;
+        "browser.tabs.closeWindowWithLastTab" = false;
         "layout.word_select.eat_space_to_next_word" = false;
+        "widget.gtk.hide-pointer-while-typing.enabled" = false;
 
-        #**************************************************************************
-        # * START: MY OVERRIDES
-        #**************************************************************************
-        # visit https:#github.com/yokoffing/Betterfox/wiki/Common-Overrides
-        # visit https:#github.com/yokoffing/Betterfox/wiki/Optional-Hardening
-        # Enter your personal overrides below this line:
+        "apz.overscroll.enabled" = true;
+        "general.smoothScroll" = true;
+        "mousewheel.default.delta_multiplier_y" = 275;
+        "general.smoothScroll.msdPhysics.enabled" = false;
+      };
+    };
 
-        #**************************************************************************
-        # * SECTION: SMOOTHFOX
-        #**************************************************************************
-        # visit https:#github.com/yokoffing/Betterfox/blob/main/Smoothfox.js
-        # Enter your scrolling overrides below this line:
+    policies = {
+      "AppAutoUpdate" = true;
+      "AppAutoUpdate_comment" = "Change to false to disable auto-updates.";
+      "DisableFirefoxStudies" = true;
+      "DisableTelemetry" = true;
+      "DisableFeedbackCommands" = true;
+      "DisablePocket" = true;
+      "DisableSetDesktopBackground" = true;
+      "DisableDeveloperTools" = false;
+      "DontCheckDefaultBrowser" = true;
+      "DNSOverHTTPS" = {
+        "Enabled" = false;
+        "ProviderURL" = "";
+        "Locked" = false;
+      };
+      "ManualAppUpdateOnly" = false;
+      "ManualAppUpdateOnly_comment" = "Change to true to disable auto-updates.";
+      "WebsiteFilter" = {
+        "Block" = [
+          "https =//localhost/*"
+        ];
       };
     };
   };

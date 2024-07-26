@@ -4,7 +4,7 @@
     enable = true;
 
     font = {
-      name = "Sono";
+      name = "Nunito";
       size = 12;
     };
 

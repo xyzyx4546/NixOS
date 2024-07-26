@@ -68,6 +68,7 @@
     packages = with pkgs; [
       font-awesome
       (pkgs.callPackage ./packages/sono/sono.nix { inherit pkgs; })
+      (pkgs.callPackage ./packages/nunito/nunito.nix { inherit pkgs; })
     ];
   };
 
