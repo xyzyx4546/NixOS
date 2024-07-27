@@ -4,6 +4,7 @@
     ./home/programs/git
     ./home/programs/kitty
     ./home/programs/neofetch
+    ./home/programs/zsh
 
     ./home/system/ags
     ./home/system/gtk

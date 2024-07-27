@@ -25,6 +25,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     initialPassword = "xyzyx";
+    shell = pkgs.zsh;
   };
 
   services = {
@@ -72,6 +73,8 @@
   };
 
   programs.hyprland.enable = true;
+  programs.zsh.enable = true;
+  programs.gamescope.enable = true;
 
   system.stateVersion = "24.05";
 }

@@ -8,6 +8,7 @@
     xdg-desktop-portal-hyprland
     grimblast
     playerctl
+    (python3.withPackages (ps: with ps; [ mako jinja2 material-color-utilities pillow ]))
   ];
 
   wayland.windowManager.hyprland = {
@@ -110,7 +111,7 @@
         "8, monitor:DP-3"
         "9, monitor:DP-3"
         "10, monitor:DP-3"
-        "98, monitor:HDMI-A-1, gapsout:10, on-created-empty:firefox"
+        "98, monitor:HDMI-A-1, gapsout:10, on-created-empty:firefox, persist:true"
         "99, monitor:HDMI-A-1, gapsout:10, default:true"
       ];
 
@@ -135,17 +136,15 @@
         # Programms
         "SUPER, SUPER_L, exec, ags -t applauncher"
         "SUPER, C, exec, kitty"
-        #"SUPER, B, exec, $HOME/.config/hypr/scripts/browser.sh"
-        "SUPER, B, exec, firefox"
         "SUPER, L, exec, hyprlock"
-        "SUPER SHIFT, Q, exec, $EWW_SCRIPTS/launcher/toggle_launcher.sh powermenu"
         ",PRINT, exec, grimblast --notify --freeze copysave area"
         "SUPER, W, exec, python ~/.config/material/material.py random"
         "SUPER SHIFT, W, exec, python ~/.config/material/material.py select"
 
         # Workspaces
-        "SUPER, N, workspace, r+1"
-        "SUPER SHIFT, N, movetoworkspace, r+1"
+        "SUPER, B, exec, python ~/.config/hypr/workspaces.py browser"
+        "SUPER, N, exec, python ~/.config/hypr/workspaces.py focus_new"
+        "SUPER SHIFT, N, exec, python ~/.config/hypr/workspaces.py move_to_new"
         "ALT, Tab, workspace, m+1"
         "ALT SHIFT, Tab, workspace, m-1"
         "SUPER, Tab, focusmonitor, +1"
