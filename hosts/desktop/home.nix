@@ -1,5 +1,4 @@
 { pkgs, ... }: {
-
   imports = [
     ./home/programs/firefox
     ./home/programs/git

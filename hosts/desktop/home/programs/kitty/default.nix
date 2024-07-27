@@ -7,7 +7,7 @@
       font_family = "JetBrainsMono Nerd Font";
       window_margin_width = 11;
       remember_window_size = "no";
-      background_opacity = "0.7";
+      background_opacity = "0.8";
 
       confirm_os_window_close = 0;
     };
