@@ -28,6 +28,7 @@
               useUserPackages = true;
               users."xyzyx" = import ./hosts/desktop/home.nix;
               extraSpecialArgs = { inherit inputs; };
+              backupFileExtension = "backup";
             };
           }
         ];

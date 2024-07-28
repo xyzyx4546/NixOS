@@ -21,6 +21,7 @@
       exec-once = [
         "swww-daemon"
         "ags"
+        "python ~/.config/hypr/workspaces.py close_empty"
         
         "sleep 1 && webcord -m"
       ];
@@ -90,8 +91,10 @@
         "size 35% 35%, class:(floating|zenity)"
         "dimaround, class:(floating|zenity)"
 
-        "monitor 0, class:(?!.*(WebCord|Spotify|org.telegram.desktop|steam))"
-        "workspace 99, class:(WebCord|Spotify|org.telegram.desktop|steam)"
+        
+        "monitor 0, class:^(?!(WebCord|Spotify|org.telegram.desktop|steam|firefox)$).+$"
+        "workspace 98, class:^(firefox)$"
+        "workspace 99, class:^(WebCord|Spotify|org.telegram.desktop|steam)$"
       ];
 
       layerrule = [
@@ -111,7 +114,7 @@
         "8, monitor:DP-3"
         "9, monitor:DP-3"
         "10, monitor:DP-3"
-        "98, monitor:HDMI-A-1, gapsout:10, on-created-empty:firefox, persist:true"
+        "98, monitor:HDMI-A-1, gapsout:10, on-created-empty:firefox"
         "99, monitor:HDMI-A-1, gapsout:10, default:true"
       ];
 
@@ -163,20 +166,12 @@
         ", XF86AudioLowerVolume, exec, ags -r \"const { open } = await import('file://$HOME/.config/ags/widgets/volume_OSD.js'); open();\" & wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05- -l 0.0"
       ];
 
-      env = [
-        "XCURSOR_SIZE, 24"
-        "HYPRCURSOR_SIZE, 24"
-
-        # FIREFOX
-        "MOZ_DISABLE_RDD_SANDBOX, 1"
-        "EGL_PLATFORM, wayland"
-        "MOZ_ENABLE_WAYLAND, 1"
-      ];
-
       misc = {
         disable_hyprland_logo = true;
 	      force_default_wallpaper = 0;
       };
     };
   };
+
+  home.file.".config/hypr/workspaces.py".source = ./workspaces.py;
 }

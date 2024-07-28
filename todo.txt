@@ -1,5 +1,4 @@
 fix cursor, top bar transperncy isnt getting updated, Volume mute-icon, miniplayer progressbar
-workspaces
 kde connect (+ statusicon)
 change kitty background dynamically
 
